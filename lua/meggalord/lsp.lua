@@ -87,3 +87,7 @@ require'lspconfig'.r_language_server.setup{
     log_lever=2
 }
 
+require'lspconfig'.yamlls.setup {
+	capabilities=capabilities,
+	on_attach=on_attach,
+}
