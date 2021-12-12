@@ -5,7 +5,7 @@ endfunction
 function! neoformat#formatters#yaml#prettier() abort
     return {
             \ 'exe': 'prettier',
-            \ 'args': ['--stdin-filepath', '"%:p"', '--parser', 'yaml'],
+            \ 'args': ['--stdin-filepath','--tab-width=2', '"%:p"', '--parser', 'yaml'],
             \ 'stdin': 1,
             \ 'try_node_exe': 1,
             \ }

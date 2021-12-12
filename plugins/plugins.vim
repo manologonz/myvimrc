@@ -1,65 +1,62 @@
 call plug#begin('~/.config/nvim/plugins/plugged')
 
-" colorscheme
+"colorscheme
 Plug 'joshdick/onedark.vim'
+Plug 'gruvbox-community/gruvbox'
 
-" highlight
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'neoclide/jsonc.vim'
-"LSP
+"lsp
 Plug 'neovim/nvim-lspconfig'
-Plug 'sharkdp/fd'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'simrat39/symbols-outline.nvim'
 
-" navigation
+"treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+"vimspector
+Plug 'puremourning/vimspector'
+Plug 'szw/vim-maximizer'
+
+"git
+Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
+
+Plug 'vim-utils/vim-man'
+Plug 'mbbill/undotree'
+
+"telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-" completition
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'hrsh7th/nvim-compe'
+"formatting
+Plug 'sbdchd/neoformat'
 
-"git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-" Plug 'lewis6991/gitsigns.nvim'
-Plug 'ThePrimeagen/git-worktree.nvim'
+"html
+Plug 'mattn/emmet-vim'
 
 " comments
 Plug 'preservim/nerdcommenter'
 
-" terminal
-Plug 'akinsho/toggleterm.nvim'
+"snippets
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'rafamadriz/friendly-snippets'
 
-" formatting
-Plug 'sbdchd/neoformat'
+"react
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 "lightline
 Plug 'itchyny/lightline.vim'
 
-" window management
-Plug 'szw/vim-maximizer'
-
-" Debug
-Plug 'puremourning/vimspector'
-
-" Snips
-Plug 'SirVer/ultisnips'
-" Plug 'mlaursen/vim-react-snippets'
-Plug 'honza/vim-snippets'
-Plug 'alvan/vim-closetag'
-
-" Emmet
-Plug 'mattn/emmet-vim'
+"floaterm
+Plug 'voldikss/vim-floaterm'
 
 " Markdown
 Plug 'skanehira/preview-markdown.vim'
 
-" File exploration
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
-
 call plug#end()
-

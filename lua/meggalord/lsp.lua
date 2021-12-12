@@ -1,7 +1,9 @@
-local function on_attach(client,bufnr)
+local function on_attach()
+
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -12,43 +14,32 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 require'lspconfig'.tsserver.setup{
-   capabilities=capabilities,
-    filetypes = {
-        "javascript",
-        "javascriptreact",
-        "javascript.jsx",
-        "typescript",
-        "typescriptreact",
-        "typescript.tsx"
-    },
-    on_attach=super_on_attach
+    capabilities = capabilities,
+    on_attach = on_attach
 }
 
 require'lspconfig'.cssls.setup{
     capabilities = capabilities,
-    capabilities=capabilities,
-    on_attach=on_attach
+    on_attach = on_attach
 }
 
 require'lspconfig'.dockerls.setup{
     filetypes = {"dockerfile"},
-    on_attach=on_attach
+    on_attach = on_attach
 }
 
 require'lspconfig'.emmet_ls.setup{
-    capabilities=capabilities,
-    filetypes = {"html", "css"},
-    on_attach=on_attach
+    capabilities = capabilities,
+    on_attach = on_attach
 }
 
 require'lspconfig'.graphql.setup{
-    filetypes = {"graphql"},
-    on_attach=on_attach
+    capabilities = capabilities,
+    on_attach = on_attach
 }
 
 require "lspconfig".html.setup {
     capabilities = capabilities,
-    filetypes = {"html"},
     on_attach = on_attach
 }
 
@@ -60,24 +51,33 @@ require'lspconfig'.jsonls.setup{
         end
         }
     },
-    capabilities=capabilities,
-    on_attach=on_attach
+    capabilities = capabilities,
+    on_attach = on_attach
 }
 
-require'lspconfig'.pyright.setup{
-    filetypes = {"python"},
-    on_attach=on_attach
+require'lspconfig'.pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true
+            }
+        }
+    },
+    single_file_support = true
 }
 
 require'lspconfig'.bashls.setup{
-    filetypes = {"sh"},
-    on_attach=on_attach
+    capabilities = capabilities,
+    on_attach = on_attach
 }
 
 require'lspconfig'.vimls.setup{
     capabilities = capabilities,
-    filetypes = {"vim"},
-    on_attach=on_attach
+    on_attach = on_attach
 }
 
 require'lspconfig'.r_language_server.setup{
@@ -88,6 +88,22 @@ require'lspconfig'.r_language_server.setup{
 }
 
 require'lspconfig'.yamlls.setup {
-	capabilities=capabilities,
-	on_attach=on_attach,
+	capabilities = capabilities,
+	on_attach = on_attach,
+	single_file_support = true,
+    settings = {
+        yaml = {
+            schemas = {
+                ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+            },
+        },
+    }
 }
+
+local opts = {
+    highlight_hovered_item = true,
+    show_guides = true
+}
+
+require('symbols-outline').setup(opts)

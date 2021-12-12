@@ -5,7 +5,7 @@ local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 
-require("telescope").setup({
+require("telescope").setup {
     defaults = {
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         prompt_prefix = " >",
@@ -21,7 +21,7 @@ require("telescope").setup({
                 ["<C-q>"] = actions.send_to_qflist,
             },
         },
-        file_ignore_patterns = {"node_modules"},
+        file_ignore_patterns = {"node_modules", ".git", "plugged", "undodir"},
     },
     extensions = {
         fzy_native = {
@@ -29,7 +29,7 @@ require("telescope").setup({
             override_file_sorter = true,
         },
     },
-})
+}
 
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("fzy_native")
