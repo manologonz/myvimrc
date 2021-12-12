@@ -42,7 +42,7 @@ let g:floaterm_width = 0.8
 let g:floaterm_height = 0.8
 let g:floaterm_autoclose = 2
 
-nnoremap <leader>ts :FloatermNew --autoclose=2 --height=0.9 --width=0.9 lazygit<CR>
+nnoremap <leader>tg :FloatermNew --autoclose=2 --height=0.9 --width=0.9 lazygit<CR>
 
 " NERDCOMMENTER
 " Create default mappings

@@ -33,6 +33,8 @@ nnoremap <leader>Y gg"+yG
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
+nnoremap <leader>no :Ex<CR>
+nnoremap <leader>ve :Vex<CR>
 
 " LSP NAVIGATION
 fun! LspLocationList()

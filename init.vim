@@ -91,9 +91,12 @@ let g:preview_markdown_auto_update = 1
 
 colorscheme onedark
 
+
 hi Floaterm guibg=onedark
 " Set floating window border line color to cyan, and background to orange
 hi FloatermBorder guibg=onedark guifg=onedark
+
+"hi Normal guibg=NONE ctermbg=NONE
 
 augroup highlight_yank
     autocmd!
@@ -103,4 +106,8 @@ augroup END
 augroup MEGGALORD
     autocmd!
     autocmd BufWritePre * %s/\s\+$//e
+augroup END
+
+augroup JsonToJsonc
+    autocmd! FileType json set filetype=jsonc
 augroup END
