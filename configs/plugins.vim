@@ -3,41 +3,48 @@ set statusline+=%{get(b:,'gitsigns_status','')}
 
 " LIGHTLINE
 let g:lightline = {
-      \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
-      \   'right': [['kitestatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
-      \ },
-      \ 'inactive': {
-      \   'left': [['inactive'], ['relativepath']],
-      \   'right': [['bufnum']]
-      \ },
-      \ 'component': {
-      \   'bufnum': '%n',
-      \   'inactive': 'inactive'
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \ },
-      \ 'colorscheme': 'onedark',
-      \ 'subseparator': {
-      \   'left': '',
-      \   'right': ''
-      \ }
-      \}
+    \'active': {
+    \   'left': [['mode', 'paste'], ['gitbranch'], ['filename', 'modified']],
+    \   'right': [['percent', 'lineinfo'], ['filetype'], ['bufnum']]
+    \},
+    \'inactive': {
+    \   'left': [['mode', 'paste'], ['gitbranch'], ['filename', 'modified']],
+    \   'right': [['percent', 'lineinfo'], ['filetype', 'bufnum']]
+    \},
+    \'tabline': {
+    \   'left': [['tabs']],
+    \   'right': [['close']],
+    \
+    \},
+    \'tab': {'active': ['tabnum', 'filename', 'modified']},
+    \'component': {
+    \   'bufnum': '%n',
+    \   'inactive': 'inactive'
+    \},
+    \'component_function': {
+    \   'gitbranch': 'fugitive#head',
+    \},
+    \'colorscheme': 'onedark',
+    \'subseparator': {
+    \   'left': '',
+    \   'right': ''
+    \}
+\}
 
 "VSNIP
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
+let g:vsnip_filetypes.typescriptreact = ['javascript', 'typescript', 'html']
 let g:vsnip_filetypes.javascript = ['javascript', 'html']
-let g:vsnip_filetypes.typescript = ['typescript', 'html']
+let g:vsnip_filetypes.typescript = ['typescript', 'javascript']
 let g:vsnip_filetypes.python = ['python']
-let g:vsnip_filetypes.html = ['typescript', 'html']
+let g:vsnip_filetypes.html = ['javascript', 'html']
 
 "FLOATERM
 let g:floaterm_keymap_new = '\tt'
 let g:floaterm_keymap_toggle = '<C-\>'
-let g:floaterm_keymap_prev = '\tn'
-let g:floaterm_keymap_next = '\tp'
+let g:floaterm_keymap_prev = '\tp'
+let g:floaterm_keymap_next = '\tn'
 let g:floaterm_width = 0.8
 let g:floaterm_height = 0.8
 let g:floaterm_autoclose = 2
@@ -70,3 +77,6 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+
+" EMMET
+let g:tagalong_verbose = 1
