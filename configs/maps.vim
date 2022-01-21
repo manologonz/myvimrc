@@ -13,6 +13,9 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 inoremap [ [<c-g>u
+inoremap ] ]<c-g>u
+inoremap { {<c-g>u
+inoremap } }<c-g>u
 
 " Jumplist mutations
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
@@ -21,6 +24,11 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 " Moving text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " greatest remap ever
 vnoremap <leader>p "_dP
@@ -41,35 +49,10 @@ fun! LspLocationList()
     " lua vim.lsp.diagnostic.set_loclist({open_loclist = false})
 endfun
 
-nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
-nnoremap <leader>gsh :lua vim.lsp.buf.signature_help()<CR>
-nnoremap <leader>grr :lua vim.lsp.buf.references()<CR>
-nnoremap <leader>grn :lua vim.lsp.buf.rename()<CR>
-nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>gsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
-nnoremap <leader>gn :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <leader>gll :call LspLocationList()<CR>
-
 augroup MEGGALORD_LSP
     autocmd!
     autocmd! BufWrite,BufEnter,InsertLeave * :call LspLocationList()
 augroup END
-
-
-" TELESCOPE (REQURES meggalord LUA PACKAGE)
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').find_files()<CR>
-nnoremap <Leader>pg :lua require('telescope.builtin').git_files()<CR>
-nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
-nnoremap <leader>rc :lua require('meggalord.tele').search_dotfiles()<CR>
-nnoremap <leader>gc :lua require('meggalord.tele').git_branches()<CR>
-nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
-nnoremap <leader>gm :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
-
 
 " VIMSPECTOR
 fun! GotoWindow(id)
@@ -99,6 +82,50 @@ nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+
+" TELESCOPE (REQURES meggalord LUA PACKAGE)
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <C-p> :lua require('telescope.builtin').find_files()<CR>
+nnoremap <Leader>pg :lua require('telescope.builtin').git_files()<CR>
+
+nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
+nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
+nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
+nnoremap <leader>rc :lua require('meggalord.tele').search_dotfiles()<CR>
+nnoremap <leader>gc :lua require('meggalord.tele').git_branches()<CR>
+nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+nnoremap <leader>gm :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+
+" NAVIGATION
+nnoremap <C-k> :cnext<CR>zz
+nnoremap <C-j> :cprev<CR>zz
+nnoremap <leader>k :lnext<CR>zz
+nnoremap <leader>j :lprev<CR>zz
+nnoremap <C-q> :call ToggleQFList(1)<CR>
+nnoremap <leader>q :call ToggleQFList(0)<CR>
+
+let g:quick_fix_list_l = 0
+let g:quick_fix_list_g = 0
+
+fun! ToggleQFList(global)
+    if a:global
+        if g:quick_fix_list_g == 1
+            let g:quick_fix_list_g = 0
+            cclose
+        else
+            let g:quick_fix_list_g = 1
+            copen
+        end
+    else
+        if g:quick_fix_list_l == 1
+            let g:quick_fix_list_l = 0
+            lclose
+        else
+            let g:quick_fix_list_l = 1
+            lopen
+        end
+    endif
+endfun
 
 " PREVIEW MARKDOWN
 nnoremap <leader>mdp :PreviewMarkdown right<CR>

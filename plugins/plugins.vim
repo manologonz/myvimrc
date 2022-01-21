@@ -8,8 +8,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'tami5/lspsaga.nvim'
+"Plug 'simrat39/symbols-outline.nvim'
 
 "treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -37,6 +37,7 @@ Plug 'sbdchd/neoformat'
 
 "html
 Plug 'mattn/emmet-vim'
+Plug 'ap/vim-css-color'
 
 " comments
 Plug 'preservim/nerdcommenter'
