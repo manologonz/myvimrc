@@ -40,7 +40,6 @@ set signcolumn=yes
 set isfname+=@-@
 set nocompatible
 set laststatus=2
-set t_Co=256
 
 " Give more space for dsplaying messages.
 set cmdheight=2
@@ -86,11 +85,12 @@ lua require'nvim-treesitter.configs'.setup {
 \}
 
 " netrw
-let g:netrw_browse_split = 0
 let g:netrw_banner = 0
+let g:netrw_liststyle = 0
+let g:netrw_browse_split = 0
+let g:netrw_preview = 1
+let g:netrw_altv = 1
 let g:netrw_winsize = 25
-let g:netrw_localrmdir='rm -r'
-let g:netrw_altv=1
 
 let g:preview_markdown_auto_update = 1
 

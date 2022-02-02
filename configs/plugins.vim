@@ -34,7 +34,7 @@ let g:lightline = {
 "VSNIP
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
-let g:vsnip_filetypes.typescriptreact = ['javascript', 'typescript', 'html']
+let g:vsnip_filetypes.typescriptreact = ['typescript', 'html', 'javascript']
 let g:vsnip_filetypes.javascript = ['javascript', 'html']
 let g:vsnip_filetypes.typescript = ['typescript', 'javascript']
 let g:vsnip_filetypes.python = ['python']
