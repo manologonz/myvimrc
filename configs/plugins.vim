@@ -36,7 +36,6 @@ let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript']
 let g:vsnip_filetypes.typescriptreact = ['javascript', 'typescript']
 let g:vsnip_filetypes.javascript = ['javascript']
-let g:vsnip_filetypes.typescript = ['typescript', 'javascript']
 let g:vsnip_filetypes.python = ['python']
 let g:vsnip_filetypes.html = ['html']
 
